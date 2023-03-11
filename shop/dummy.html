@@ -1,0 +1,135 @@
+      <!-- <aside>
+        <section>
+          <title>Colors</title>
+          <ul>
+            <li>
+              <input id="red" type="checkbox" name="age" />
+              <input id="blue" type="checkbox" name="age" />
+              <label for="red">Red</label>
+            </li>
+            <li>
+              <input id="blue" type="checkbox" name="color" />
+              <label for="blue">Blue</label>
+            </li>
+            <li>
+              <input id="black" type="checkbox" name="color" />
+              <label for="black">Black</label>
+            </li>
+            <li>
+              <input id="white" type="checkbox" name="color" />
+              <label for="white">White</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <title>Sizes</title>
+          <ul>
+            <li>
+              <input id="s" type="checkbox" name="color" />
+              <label for="s">S</label>
+            </li>
+            <li>
+              <input id="m" type="checkbox" name="color" />
+              <label for="m">M</label>
+            </li>
+            <li>
+              <input id="l" type="checkbox" name="color" />
+              <label for="l">L</label>
+            </li>
+            <li>
+              <input id="xl" type="checkbox" name="color" />
+              <label for="xl">XL</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <title>Rating</title>
+          <input
+            type="range"
+            id="range"
+            min="0"
+            max="5"
+            value="0"
+            list="values"
+          />
+          <datalist id="values">
+            <option value="0" label="0"></option>
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5" label="5"></option>
+          </datalist>
+        </section>
+        <section>
+          <title>Price Range</title>
+          <ul>
+            <li>
+              <input id="0-25" type="checkbox" name="prange" />
+              <label for="0-25">$0 to $25</label>
+            </li>
+            <li>
+              <input id="25-50" type="checkbox" name="prange" />
+              <label for="25-50">$25 to $50</label>
+            </li>
+            <li>
+              <input id="50-100" type="checkbox" name="prange" />
+              <label for="50-100">$50 to $100</label>
+            </li>
+            <li>
+              <input id="100on" type="checkbox" name="prange" />
+              <label for="100on">$100 onwards</label>
+            </li>
+          </ul>
+        </section>
+      </aside> -->
+
+
+<!-- 
+      let allprices = document.querySelectorAll('.priceRance');
+console.log(allprices);
+
+for (let i = 0; i < allprices.length; i++) {
+  let zero = allprices;
+
+  zero[i].addEventListener('change', () => {
+    if (zero[i].checked == false) {
+      zero[i].checked = false;
+      let userCard = "";
+      document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
+      userCard.forEach(function (elem) {
+        let cardElem = parseInt(elem.querySelector('.price').innerText);
+        elem.classList.remove('hide');
+      })
+    }
+    else {
+      zero[i].checked = true;
+      twentyfive.checked = false;
+      fifty.checked = false;
+      hundred.checked = false;
+      let userCard = "";
+      document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
+      userCard.forEach(function (elem) {
+        let ruppee = elem.querySelector('.price').innerText
+        let cardElem = parseInt(ruppee.replaceAll('$', ''));
+        console.log("true>>> "+ i);
+        elem.classList.add('hide');
+        if (i == 0) {
+          if (cardElem >= 0 && cardElem <= 25) {
+            elem.classList.remove('hide');
+
+          }
+        }
+        if (i == 1) {
+          zero[0]=false;
+          if (cardElem >= 25 && cardElem <= 50) {
+            elem.classList.remove('hide');
+            
+          }
+        }
+
+      })
+    }
+
+  })
+} -->

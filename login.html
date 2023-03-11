@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoginUp</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="/index.html">Home</a>
+        <a href="/login.html">Login</a>
+        <a href="/signup.html">Signup</a>
+        <a href="/cart">My Cart</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <h3>LOGIN</h3>
+
+    <input type="email" placeholder="EMAIL" id="email-input">
+    <input type="password" placeholder="PASSWORD" id="pass-input">
+    <p id="error-message"></p>
+    <button type="submit" class="submit" id="login">LOGIN</button>
+
+  </main>
+
+  <script>
+    let login = document.querySelector("#login");
+    login.addEventListener('click', loginUser)
+
+    function loginUser() {
+    var email = document.getElementById("email-input").value;
+    var password = document.getElementById("pass-input").value;
+  
+    if (email && password) {
+      const users = localStorage.getItem("users")
+        ? JSON.parse(localStorage.getItem("users"))
+        : [];
+    
+      console.log("users", users);
+  
+      const userFromArr = users.filter((user) => user.email === email);
+      console.log("userFromArr", userFromArr);
+  
+      if (userFromArr.length > 0) {
+        if (userFromArr[0].password == password) {
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+              name:userFromArr[0].name,
+              email: email,
+              password: password,
+              addCart: [],
+            })
+          );
+          window.location.href = "../shop/index.html";
+        } else {
+          document.getElementById("error-message").innerText =
+            "Password is incorrect";
+        }
+      } else {
+        document.getElementById("error-message").innerText =
+          "User does not exist";
+      }
+    }
+  }
+
+  </script>
+
+  <script src="/script.js"></script>
+</body>
+
+</html>

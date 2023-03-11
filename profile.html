@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="brand">
+                <a href="/">MeShop.</a>
+            </div>
+            <div class="nav-items">
+                <a href="/index.html">Home</a>
+                <a href="/login.html">Login</a>
+                <a href="/signup.html">Signup</a>
+                <a href="/cart">My Cart</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h3>Profile</h3>
+        <div class="profile">
+            <div class="name"></div>
+            <div class="email"></div>
+        </div>
+        <input type="text" placeholder="NAME" id="name-input">
+        <input type="password" placeholder="OLD PASSWORD" id="old-pass">
+        <input type="password" placeholder="NEW PASSWORD" id="new-pass">
+        <input type="password" placeholder="CONFIRM PASSWORD" id="new-confirm-pass">
+        <p id="error-message"></p>
+        <button class="submit" id="save">SAVE</button>
+        <button class="btn" id="logout">LOGOUT</button>
+
+    </main>
+
+    <script>
+        if (localStorage.getItem('currentUser')) {
+            let curr = JSON.parse(localStorage.getItem("currentUser"));
+            document.querySelector('.name').innerHTML = curr.name;
+            document.querySelector('.email').innerHTML = curr.email;
+        }
+        //   change password
+
+let save = document.querySelector("#save");
+    save.addEventListener('click', changePassword)
+
+function changePassword() {
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    var oldPass = document.getElementById("old-pass").value;
+    var newPass = document.getElementById("new-pass").value;
+    var newConfirmPass = document.getElementById("new-confirm-pass").value;
+  
+    if (oldPass === currentUser.password) {
+      if (newPass === newConfirmPass && newPass !== oldPass) {
+        // editing the currentUserObj
+        currentUser.password = newPass;
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  
+        //   editing the users array
+        var users = JSON.parse(localStorage.getItem("users"));
+        var allUsersExceptCurrent = users.filter(
+          (user) => user.email != currentUser.email
+        );
+        var newUser = {
+          email: currentUser.email,
+          password: currentUser.password,
+        };
+        allUsersExceptCurrent.push(newUser);
+        localStorage.setItem("users", JSON.stringify(allUsersExceptCurrent));
+      } else if (oldPass === newPass) {
+        document.getElementById("error-message").innerText =
+          "Your old password should not be your new password";
+      } else if (newPass != newConfirmPass) {
+        document.getElementById("error-message").innerText =
+          "Your new password does not match your new confirmation password";
+      }
+    } else {
+      document.getElementById("error-message").innerText =
+        "Your old password does not match";
+    }
+  }
+
+  let logoutt=document.getElementById('logout');
+  logoutt.addEventListener('click', logout)
+  console.log(logout);
+  
+  function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "/login.html";
+  }
+    </script>
+
+
+    <script src="/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  /* max-width: 1328px; */
+}
+
+.hide{
+  display: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 2px;
+  margin: 1rem auto;
+}
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  /* max-width: 1328px; */
+  background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav .nav-items a {
+  margin: 0 1rem;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  top: 3.9rem;
+  /* max-width: 1328px; */
+}
+
+main aside {
+  display: none;
+  /* flex: 0.2; */
+  background-color: black;
+  color: white;
+  height: max-content;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  padding-top: 1rem;
+  width: 19rem;
+  /* overflow-y: scroll; */
+}
+
+main main-content {
+  display: block;
+  width: 100%;
+  /* position: relative; */
+  /* left: 13rem; */
+  margin-left: 2px;
+}
+
+aside section {
+  padding: 1rem;
+  border-bottom: 1px solid white;
+}
+
+aside section:last-child {
+  border-bottom: none;
+}
+
+aside section title {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+aside section li {
+  margin-bottom: 0.75rem;
+}
+
+aside section label {
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+
+ main-content {
+  padding: 1rem;
+  position: relative;
+}
+
+main-content input {
+  padding: 1rem;
+  width: 100%;
+  position: relative;
+  font-size: 1rem;
+}
+
+main-content .filters {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+main-content .filter {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  cursor: pointer;
+} 
+
+ main-content .active {
+  background-color: black;
+  color: white;
+}
+
+main-content section {
+  margin-top: 1.2rem;
+}
+
+main-content section title {
+  display: block;
+  font-size: 1.5rem;
+}
+
+main-content .items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-betweens;
+  width: 70%;
+  /* overflow-x: scroll; */
+  padding: 0 0;
+  gap: 1rem;
+} 
+
+ main-content .items .item {
+  /* border: 1px solid black; */
+  max-width: 30%;
+  min-width: 180px;
+}
+
+main-content .items .item img {
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+
+main-content .items .item .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+main-content .items .item .info {
+  padding: 1rem;
+} 
+
+ main-content .items .item button {
+  width: 100%;
+  border-radius: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+main-content .items .item .colors {
+  display: flex;
+  margin: 1rem 0;
+}
+
+main-content .items .item .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin: 0 5px;
+} 
+
+.productName{
+  font-size: 12px;
+  font-weight: 500;
+  min-height: 70px;
+  margin-bottom: 5px;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.heading{
+  text-align: center;
+ 
+}
+
+.cart-row{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: .7rem;
+}
+
+.total{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-block: 1px solid white;
+  padding-block: .5rem;
+  margin-bottom: 10px;
+}
+
+.price{
+  width:55px;
+  text-align: right;
+}
+
+.checkout{
+  padding: .7rem;
+  background-color: black;
+  color: white;
+  height: max-content;
+}
+
+.checkout h2{
+  padding-block: 1rem;
+}
+
+#checkout{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin:auto;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeShop.</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="brand">
+        <a href="/">MeShop.</a>
+      </div>
+      <div class="nav-items">
+        <a href="/">Home</a>
+        <!-- <a href="../login.html">Login</a>
+        <a href="../signup.html">Signup</a> -->
+        <a href="../profile.html">Profile</a>
+        <a href="/cart">My Cart</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="left">
+        <div class="rating">
+            <h3>Filter items</h3>
+            <h4>Rating</h4>
+            <input type="range" min="0" max="5" value="0" class="slider" id="myRange">
+            <div class="num">
+                <div>Default</div>
+                <div>5</div>
+            </div>
+        </div>
+        <div class="price-range">
+            <h3>Price</h4>
+            <div class="product-price">
+                <label for=""><input id="checkbox0" class="priceRance" type="checkbox"> $0 to $25</label>
+                <label for=""><input id="checkbox25" class="priceRance" type="checkbox"> $25 to $50</label>
+                <label for=""><input id="checkbox50" class="priceRance" type="checkbox"> $50 to $100</label>
+                <label for=""><input id="checkbox100" class="priceRance" type="checkbox"> $100 above</label>
+            </div>
+        </div>
+     </div>
+      <main-content>
+        <input type="text" placeholder="Search" id="search" class="input-search" onkeyup="search()"/>
+        <div class="filters">
+          <div class="filter active" onclick="filterProduct('All')">All</div>
+          <div class="filter" onclick="filterProduct('Mens')">Mens</div>
+          <div class="filter" onclick="filterProduct('Womens')">Womens</div>
+          <div class="filter" onclick="filterProduct('Jewellery')">Jewellery</div>
+          <div class="filter" onclick="filterProduct('Electronics')">Electronics</div>
+        </div>
+        <section>
+          <title>Women's Clothing</title>
+          <div class="items" id="women">
+           </div>
+        </section>
+        <section>
+          <title>Men's Clothing</title>
+          <div class="items" id="men">
+           </div>
+        </section>
+        <section>
+          <title>Electronics</title>
+          <div class="items" id="electr">
+           </div>
+        </section>
+        <section>
+          <title>Jewellery</title>
+          <div class="items" id="jewel">
+           </div>
+        </section>        
+      </main-content>
+    </main>
+  </body>
+</html>
+
+
+
+<!-- <section>
+  <title>Women's Clothing</title>
+  <div class="items">
+    <div class="item">
+      <img src="tshirt.png" alt="Item" />
+      <div class="info">
+        <div class="row">
+          <div class="price">$100</div>
+          <div class="sized">S,M,L</div>
+        </div>
+        <div class="colors">
+          Colors:
+          <div class="row">
+            <div class="circle" style="background-color: #000"></div>
+            <div class="circle" style="background-color: #4938af"></div>
+            <div class="circle" style="background-color: #203d3e"></div>
+          </div>
+        </div>
+        <div class="row">Rating:</div>
+      </div>
+      <button id="addBtn">Add to Cart</button>
+    </div>
+    <div class="item">
+      <img src="tshirt.png" alt="Item" />
+      <div class="info">
+        <div class="row">
+          <div class="price">$100</div>
+          <div class="sized">S,M,L</div>
+        </div>
+        <div class="colors">
+          Colors:
+          <div class="row">
+            <div class="circle" style="background-color: #000"></div>
+            <div class="circle" style="background-color: #4938af"></div>
+            <div class="circle" style="background-color: #203d3e"></div>
+          </div>
+        </div>
+        <div class="row">Rating:</div>
+      </div>
+      <button id="addBtn">Add to Cart</button>
+    </div>
+    <div class="item">
+      <img src="tshirt.png" alt="Item" />
+      <div class="info">
+        <div class="row">
+          <div class="price">$100</div>
+          <div class="sized">S,M,L</div>
+        </div>
+        <div class="colors">
+          Colors:
+          <div class="row">
+            <div class="circle" style="background-color: #000"></div>
+            <div class="circle" style="background-color: #4938af"></div>
+            <div class="circle" style="background-color: #203d3e"></div>
+          </div>
+        </div>
+        <div class="row">Rating:</div>
+      </div>
+      <button id="addBtn">Add to Cart</button>
+    </div>
+    <div class="item">
+      <img src="tshirt.png" alt="Item" />
+      <div class="info">
+        <div class="row">
+          <div class="price">$100</div>
+          <div class="sized">S,M,L</div>
+        </div>
+        <div class="colors">
+          Colors:
+          <div class="row">
+            <div class="circle" style="background-color: #000"></div>
+            <div class="circle" style="background-color: #4938af"></div>
+            <div class="circle" style="background-color: #203d3e"></div>
+          </div>
+        </div>
+        <div class="row">Rating:</div>
+      </div>
+      <button id="addBtn">Add to Cart</button>
+    </div>
+    <div class="item">
+      <img src="tshirt.png" alt="Item" />
+      <div class="info">
+        <div class="row">
+          <div class="price">$100</div>
+          <div class="sized">S,M,L</div>
+        </div>
+        <div class="colors">
+          Colors:
+          <div class="row">
+            <div class="circle" style="background-color: #000"></div>
+            <div class="circle" style="background-color: #4938af"></div>
+            <div class="circle" style="background-color: #203d3e"></div>
+          </div>
+        </div>
+        <div class="row">Rating:</div>
+      </div>
+      <button id="addBtn">Add to Cart</button>
+    </div>
+  </div>
+</section> -->
