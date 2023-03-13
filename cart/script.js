@@ -10,14 +10,14 @@ function ready(){
     let cartItems=document.querySelector('.list');
     const home = document.querySelector('.home');
 
-    home.addEventListener("click", () => {
-        if (localStorage.getItem('currentUser')) {
-            window.location.href = '../shop/index.html';
-        }
-        else {
-            window.location.href = '../index.html';
-        }
-    })
+    // home.addEventListener("click", () => {
+    //     if (localStorage.getItem('currentUser')) {
+    //         window.location.href = '../shop/index.html';
+    //     }
+    //     else {
+    //         window.location.href = '../index.html';
+    //     }
+    // })
 
 
     if (localStorage.getItem('currentUser')) {
@@ -39,7 +39,7 @@ function ready(){
                               <div class="sized">S,M,L</div>
                             </div>
                             
-                            <div class="row">Rating:${element.rating.rate}</div>
+                            <p class="card-rating">${element.rating.rate} &#9733;<span class="muted">(${element.rating.count})</span><span class="off">71% off</span></p>
                           </div>
                           <button class="addBtn btn-danger" id=${element.id}>Remove from Cart</button>
                         </div>`

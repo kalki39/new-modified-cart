@@ -71,11 +71,12 @@ nav .nav-items a {
 }
 
 main {
-    height: 100vh;
+    height: calc(100vh-63px);
     position: relative;
     top: 3.9rem;
     width: 90%;
     margin: 0 auto;
+    padding-top: 1rem;
     /* max-width: 1328px; */
 }
 
@@ -199,4 +200,31 @@ main h1{
 .profile{
   display: flex;
   justify-content: space-between;
+}
+
+
+
+/*-------------------- media queries------------------ */
+
+@media (max-width: 500px) {
+  .flex .right{
+    display: none;
+  }
+
+  main{
+    padding-block: 1rem;
+    /* text-align: center; */
+    margin-left: 27px;
+  }
+
+  .photo svg{
+    max-height: 500px;
+    width: 100%;
+  }
+  .logMain{
+    margin-left: 19.5px;
+    padding-top: 2rem;
+    /* max-height: calc(100vh-63px) !important; */
+    height: 100vh;
+  }
 }

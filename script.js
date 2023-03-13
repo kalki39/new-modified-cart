@@ -2,16 +2,7 @@
 
 // myCartProductArray = myProducts.filter((item)=> myCartIDs.includes(item.id))
 console.log("ram");
-let home = document.querySelector('.home');
 
-    home.addEventListener("click", () => {
-        if (localStorage.getItem('currentUser')) {
-            window.location.href = './shop/index.html';
-        }
-        else {
-            window.location.href = '/index.html';
-        }
-    })
 
 // signup
 let submit=document.querySelector(".submit");

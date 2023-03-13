@@ -15,7 +15,7 @@ document.getElementById("rzp-button1").onclick = function (e) {
       color: "#000",
     },
     image:
-      "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
+      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fbag-shop-vector-logo-template-260nw-1804755151.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fonline-fashion-store-logo&tbnid=WCNwZkQmIzxOXM&vet=12ahUKEwjSgfWov9n9AhWMl9gFHVEGAGMQMygCegUIARCRAQ..i&docid=Mtn9Lkj9udg_0M&w=260&h=280&q=meshop%20logo&ved=2ahUKEwjSgfWov9n9AhWMl9gFHVEGAGMQMygCegUIARCRAQ",
   };
 
   var rzpy1 = new Razorpay(options);

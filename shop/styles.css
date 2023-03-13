@@ -228,7 +228,7 @@ main-content .items {
   width: auto;
   overflow-x: scroll;
   scrollbar-color: rebeccapurple green;
-  padding: 1rem 0;
+  padding: 1rem ;
   gap: 1rem;
 } 
 
@@ -236,6 +236,13 @@ main-content .items {
   /* border: 1px solid black; */
   max-width: 250px;
   min-width: 180px;
+  padding: 0.7rem;
+  transition: transform 250ms ease;
+}
+
+.item:hover{
+  border: 1px solid rgb(90, 87, 87);
+  transform: scale(1.07);
 }
 
 main-content .items .item img {
@@ -249,8 +256,20 @@ main-content .items .item .row {
 }
 
 main-content .items .item .info {
-  padding: 1rem;
+  padding-block: 1rem;
+  padding-inline: .5rem;
 } 
+
+.card-rating{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.off{
+  align-self: flex-end;
+  margin-left: auto;
+}
 
  main-content .items .item button {
   width: 100%;
@@ -285,5 +304,81 @@ main-content .items .item .circle {
 }
 
 .muted{
-  font-size: 10px;
+  font-size: 14px;
+}
+
+
+/*------------------------ medai queries------------------------------ */
+
+@media (max-width: 500px) {
+  body {
+    /* background-color: #87ceeb; */
+  }
+
+  main{
+    flex-direction: column;
+  }
+
+  main .left {
+    /* min-width: 135px; */
+    /* top: 62px; */
+    /* bottom: 0; */
+    /* font-size: 13px; */
+    height: min-content;
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    font-weight: 200;
+    color: #000000;
+  }
+
+  .left > div{
+    padding: 5px;
+    border: none;
+    font-weight: 500;
+  }
+
+  .rating > h3{
+    display: none;
+  }
+
+  .left .product-price {
+    /* margin-bottom: 10px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    font-size: 12px;
+    padding-top: 0;
+  }
+
+  main main-content {
+    /* display: block; */
+    width: 100%;
+    left: 0;
+    top: 120px;
+    /* position: relative; */
+    /* left: 13rem; */
+    /* margin-left: 2px; */
+  }
+
+  .filters > div{
+    font-size: 12px;
+    padding-inline: 5px;
+  }
+
+  main-content .items {
+    padding-inline: 0;
+  }
+
+  .slider {
+    background-color: black;
+  }
+
+  .nav-items a{
+    margin-left: 0 !important;
+  }
+
 }

@@ -3,6 +3,16 @@ let menContainer = document.getElementById('men')
 let womenContainer = document.getElementById('women')
 let jewContainer = document.getElementById('jewel')
 let elecContainer = document.getElementById('electr')
+const home = document.querySelector('.home');
+
+    home.addEventListener("click", () => {
+        if (localStorage.getItem('currentUser')) {
+            window.location.href = '../shop/index.html';
+        }
+        else {
+            window.location.href = '../index.html';
+        }
+    })
 
 let products = {}
 
@@ -15,6 +25,8 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
   if (localStorage.getItem('products') == null) {
     localStorage.setItem('products', JSON.stringify(data))
   }
+
+
   data.map((item) => {
 
     console.log(item.category);
@@ -28,7 +40,7 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
             <div class="price">$${item.price}</div>
             <div class="sized">S,M,L</div>
           </div>
-          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span></p>   
+          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span><span class="off">71% off</span></p>   
         </div>
         <button class="addBtn" id=${item.id}>Add to Cart</button>
       </div>`
@@ -43,7 +55,7 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
             <div class="price">$${item.price}</div>
             <div class="sized">S,M</div>
           </div>
-          <p class="card-rating">${item.rating.rate} &#9733;</p> 
+          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span><span class="off">71% off</span></p> 
         </div>
         <button class="addBtn" id=${item.id}>Add to Cart</button>
       </div>`
@@ -58,8 +70,7 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
             <div class="price">$${item.price}</div>
             <div class="sized">L,XL</div>
           </div>
-          <p class="card-rating">${item.rating.rate} &#9733;</p> 
-        </div>
+          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span><span class="off">71% off</span></p>         </div>
         <button class="addBtn" id=${item.id}>Add to Cart</button>
       </div>`
     }
@@ -73,8 +84,7 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
             <div class="price">$${item.price}</div>
             <div class="sized">S,M,L</div>
           </div>
-          <p class="card-rating">${item.rating.rate} &#9733;</p> 
-        </div>
+          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span><span class="off">71% off</span></p>         </div>
         <button class="addBtn" id=${item.id}>Add to Cart</button>
       </div>`
     }
@@ -88,14 +98,50 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
             <div class="price">$${item.price}</div>
             <div class="sized">S,M,L</div>
           </div>
-          <p class="card-rating">${item.rating.rate} &#9733;</p> 
-        </div>
+          <p class="card-rating">${item.rating.rate} &#9733;<span class="muted">(${item.rating.count})</span><span class="off">71% off</span></p>         </div>
         <button class="addBtn" id=${item.id}>Add to Cart</button>
       </div>`
     }
   })
 
-}).catch((err) => console.log("Error in API is", err))
+}).then(()=>{
+  // setTimeout(() => {
+
+    //cart button modify when btn is clicked
+  
+    var addToCartButtons = document.querySelectorAll('.addBtn')
+    console.log(addToCartButtons);
+    let curr = JSON.parse(localStorage.getItem('currentUser'))
+    let array = curr.addCart;
+    array.forEach(element => {
+      addToCartButtons.forEach(button => {
+        if (button.id == element) {
+          button.classList.add('added');
+          button.innerHTML = "ADDED";
+          button.style.backgroundColor = "#42ad51";
+        }
+      });
+    });
+  
+    //set local storage when add to cart button is clicked
+  
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (!button.className.includes('added')) {
+          button.classList.add('added');
+          console.log(button.className);
+          let curr = JSON.parse(localStorage.getItem('currentUser'))
+          curr.addCart.push(Number(button.id));
+          button.innerHTML = "ADDED";
+          button.style.backgroundColor = "#42ad51";
+          localStorage.setItem('currentUser', JSON.stringify(curr))
+        }
+      })
+    });
+  
+  // }, 1000);
+})
+.catch((err) => console.log("Error in API is", err))
 
 console.log(products);
 
@@ -323,38 +369,38 @@ function search() {
   });
 };
 
-setTimeout(() => {
+// setTimeout(() => {
 
-  //cart button modify when btn is clicked
+//   //cart button modify when btn is clicked
 
-  var addToCartButtons = document.querySelectorAll('.addBtn')
-  console.log(addToCartButtons);
-  let curr = JSON.parse(localStorage.getItem('currentUser'))
-  let array = curr.addCart;
-  array.forEach(element => {
-    addToCartButtons.forEach(button => {
-      if (button.id == element) {
-        button.classList.add('added');
-        button.innerHTML = "ADDED";
-        button.style.backgroundColor = "#42ad51";
-      }
-    });
-  });
+//   var addToCartButtons = document.querySelectorAll('.addBtn')
+//   console.log(addToCartButtons);
+//   let curr = JSON.parse(localStorage.getItem('currentUser'))
+//   let array = curr.addCart;
+//   array.forEach(element => {
+//     addToCartButtons.forEach(button => {
+//       if (button.id == element) {
+//         button.classList.add('added');
+//         button.innerHTML = "ADDED";
+//         button.style.backgroundColor = "#42ad51";
+//       }
+//     });
+//   });
 
-  //set local storage when add to cart button is clicked
+//   //set local storage when add to cart button is clicked
 
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      if (!button.className.includes('added')) {
-        button.classList.add('added');
-        console.log(button.className);
-        let curr = JSON.parse(localStorage.getItem('currentUser'))
-        curr.addCart.push(Number(button.id));
-        button.innerHTML = "ADDED";
-        button.style.backgroundColor = "#42ad51";
-        localStorage.setItem('currentUser', JSON.stringify(curr))
-      }
-    })
-  });
+//   addToCartButtons.forEach(button => {
+//     button.addEventListener('click', () => {
+//       if (!button.className.includes('added')) {
+//         button.classList.add('added');
+//         console.log(button.className);
+//         let curr = JSON.parse(localStorage.getItem('currentUser'))
+//         curr.addCart.push(Number(button.id));
+//         button.innerHTML = "ADDED";
+//         button.style.backgroundColor = "#42ad51";
+//         localStorage.setItem('currentUser', JSON.stringify(curr))
+//       }
+//     })
+//   });
 
-}, 1000);
+// }, 2500);

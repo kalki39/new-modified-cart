@@ -236,6 +236,21 @@ main-content .items .item .circle {
   gap: .7rem;
 }
 
+.card-rating{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.off{
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.muted{
+  font-size: 14px;
+}
+
 .total{
   display: flex;
   justify-content: flex-end;
@@ -266,4 +281,27 @@ main-content .items .item .circle {
   padding: 10px;
   border-radius: 5px;
   margin:auto;
+}
+
+
+
+/* media queries */
+
+@media (max-width: 500px) {
+  body {
+    background-color: #87ceeb;
+  }
+
+  .container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    gap: 10px;
+  }
+
+  .container .items .item{
+    min-width: 160px;
+    max-width: 160px;
+    font-size: 12px;
+  }
 }
