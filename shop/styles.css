@@ -381,4 +381,8 @@ main-content .items .item .circle {
     margin-left: 0 !important;
   }
 
+  .item:hover{
+    border: none;
+  }
+
 }

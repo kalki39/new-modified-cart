@@ -283,15 +283,37 @@ main-content .items .item .circle {
   margin:auto;
 }
 
+.orderMessage{
+  width: 100%;
+  margin: 1rem;
+  margin-top: 4rem;
+  padding-inline: 1rem;
+  text-align: center;
+  font-size: 27px;
+  display: none;
+}
+
+.orderMessage i {
+  color: #9ABC66;
+  font-size: 100px;
+  line-height: 200px;
+  margin-left:-15px;
+}
+
+.tick{
+  border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;
+}
+
+.sus{
+  color:#0fad00;margin-bottom: 5px;
+}
+
 
 
 /* media queries */
 
 @media (max-width: 500px) {
-  body {
-    background-color: #87ceeb;
-  }
-
+ 
   .container{
     display: flex;
     justify-content: space-around;
