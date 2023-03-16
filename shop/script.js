@@ -5,14 +5,14 @@ let jewContainer = document.getElementById('jewel')
 let elecContainer = document.getElementById('electr')
 const home = document.querySelector('.home');
 
-    home.addEventListener("click", () => {
-        if (localStorage.getItem('currentUser')) {
-            window.location.href = '../shop/index.html';
-        }
-        else {
-            window.location.href = '../index.html';
-        }
-    })
+home.addEventListener("click", () => {
+  if (localStorage.getItem('currentUser')) {
+    window.location.href = '../shop/index.html';
+  }
+  else {
+    window.location.href = '../index.html';
+  }
+})
 
 let products = {}
 
@@ -104,44 +104,44 @@ fetch(`https://fakestoreapi.com/products/`).then(res => res.json()).then(data =>
     }
   })
 
-}).then(()=>{
-  // setTimeout(() => {
+}).then(() => {
 
-    //cart button modify when btn is clicked
-  
-    var addToCartButtons = document.querySelectorAll('.addBtn')
-    console.log(addToCartButtons);
-    let curr = JSON.parse(localStorage.getItem('currentUser'))
-    let array = curr.addCart;
-    array.forEach(element => {
-      addToCartButtons.forEach(button => {
-        if (button.id == element) {
-          button.classList.add('added');
-          button.innerHTML = "ADDED";
-          button.style.backgroundColor = "#42ad51";
-        }
-      });
-    });
-  
-    //set local storage when add to cart button is clicked
-  
+
+  //cart button modify when btn is clicked
+
+  var addToCartButtons = document.querySelectorAll('.addBtn')
+  console.log(addToCartButtons);
+  let curr = JSON.parse(localStorage.getItem('currentUser'))
+  let array = curr.addCart;
+  array.forEach(element => {
     addToCartButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (!button.className.includes('added')) {
-          button.classList.add('added');
-          console.log(button.className);
-          let curr = JSON.parse(localStorage.getItem('currentUser'))
-          curr.addCart.push(Number(button.id));
-          button.innerHTML = "ADDED";
-          button.style.backgroundColor = "#42ad51";
-          localStorage.setItem('currentUser', JSON.stringify(curr))
-        }
-      })
+      if (button.id == element) {
+        button.classList.add('added');
+        button.innerHTML = "ADDED";
+        button.style.backgroundColor = "#42ad51";
+      }
     });
-  
-  // }, 1000);
+  });
+
+  //set local storage when add to cart button is clicked
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (!button.className.includes('added')) {
+        button.classList.add('added');
+        console.log(button.className);
+        let curr = JSON.parse(localStorage.getItem('currentUser'))
+        curr.addCart.push(Number(button.id));
+        button.innerHTML = "ADDED";
+        button.style.backgroundColor = "#42ad51";
+        localStorage.setItem('currentUser', JSON.stringify(curr))
+      }
+    })
+  });
+
+
 })
-.catch((err) => console.log("Error in API is", err))
+  .catch((err) => console.log("Error in API is", err))
 
 console.log(products);
 
@@ -165,15 +165,15 @@ function filterProduct(value) {
   let elements = document.querySelectorAll(".item");
   let allprices = document.querySelectorAll('.priceRance');
   const myRating = document.querySelector('#myRange');
-  
+
   //loop through all cards
   elements.forEach((element) => {
     //display all cards on 'all' button click
     // const zero = document.querySelector('#checkbox0');
-    allprices.forEach(ele => {
-      ele.checked = false;
-      myRating.value=0;
-    });
+    // allprices.forEach(ele => {
+    //   ele.checked = false;
+    //   myRating.value=0;
+    // });
 
 
     if (value == "all") {
@@ -195,6 +195,27 @@ function filterProduct(value) {
         element.parentElement.parentElement.classList.add("hide")
       }
     }
+    ratingfn();
+    // let checkbox = document.querySelectorAll('.priceRance');
+    // let selectedBox;
+    // checkbox.forEach((box, index) => {
+    //   if (box.checked == true) {
+    //     selectedBox = index;
+    //   }
+    // })
+    // if (selectedBox == 0) {
+    //   zerofn();
+    // }
+    // else if (selectedBox == 1) {
+    //   console.log(yessssssssssssssssss);
+    //   twentyfn()
+    // }
+    // else if (selectedBox == 2) {
+    //   fiftyfn()
+    // }
+    // else if (selectedBox == 3) {
+    //   hundredfn()
+    // }
   });
 }
 
@@ -206,7 +227,8 @@ const fifty = document.querySelector('#checkbox50');
 const hundred = document.querySelector('#checkbox100');
 const myRating = document.querySelector('#myRange');
 let myValue = myRating.value;
-zero.addEventListener('change', () => {
+zero.addEventListener('change', ratingfn)
+function zerofn() {
   if (zero.checked == false) {
     zero.checked = false;
     let userCard = "";
@@ -221,11 +243,13 @@ zero.addEventListener('change', () => {
     twentyfive.checked = false;
     fifty.checked = false;
     hundred.checked = false;
-    myRating.value=0;
+    // myRating.value=0;
     let userCard = "";
     document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
+    console.log(userCard);
     userCard.forEach(function (elem) {
       let ruppee = elem.querySelector('.price').innerText
+      console.log(ruppee);
       let cardElem = parseInt(ruppee.replaceAll('$', ''));
       console.log(cardElem);
       elem.classList.add('hide');
@@ -235,8 +259,9 @@ zero.addEventListener('change', () => {
     })
   }
 
-})
-twentyfive.addEventListener('change', () => {
+}
+twentyfive.addEventListener('change', ratingfn)
+function twentyfn() {
   if (twentyfive.checked == false) {
     twentyfive.checked = false;
     let userCard = "";
@@ -251,7 +276,7 @@ twentyfive.addEventListener('change', () => {
     zero.checked = false;
     fifty.checked = false;
     hundred.checked = false;
-    myRating.value=0;
+    // myRating.value=0;
     let userCard = "";
     document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
     userCard.forEach(function (elem) {
@@ -265,8 +290,9 @@ twentyfive.addEventListener('change', () => {
     })
   }
 
-})
-fifty.addEventListener('change', () => {
+}
+fifty.addEventListener('change', ratingfn)
+function fiftyfn() {
   if (fifty.checked == false) {
     fifty.checked = false;
     let userCard = "";
@@ -281,7 +307,7 @@ fifty.addEventListener('change', () => {
     twentyfive.checked = false;
     zero.checked = false;
     hundred.checked = false;
-    myRating.value=0;
+    // myRating.value=0;
     let userCard = "";
     document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
     userCard.forEach(function (elem) {
@@ -295,8 +321,9 @@ fifty.addEventListener('change', () => {
     })
   }
 
-})
-hundred.addEventListener('change', () => {
+}
+hundred.addEventListener('change', ratingfn)
+function hundredfn() {
   if (hundred.checked == false) {
     hundred.checked = false;
     let userCard = "";
@@ -311,7 +338,7 @@ hundred.addEventListener('change', () => {
     twentyfive.checked = false;
     fifty.checked = false;
     zero.checked = false;
-    myRating.value=0;
+    // myRating.value=0;
     let userCard = "";
     document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
     userCard.forEach(function (elem) {
@@ -325,26 +352,51 @@ hundred.addEventListener('change', () => {
     })
   }
 
-})
+}
 
 
 //Filter product by rating
 
 
-myRating.oninput = function () {
-  myValue = this.value;
-  let userCard = "";
+myRating.addEventListener('change', ratingfn) 
+function ratingfn() {
+  let checkbox = document.querySelectorAll('.priceRance');
+  let selectedBox;
+  checkbox.forEach((box, index) => {
+    if (box.checked == true) {
+      selectedBox = index;
+    }
+  })
+  if (selectedBox == 0) {
+    zerofn();
+  }
+  else if (selectedBox == 1) {
+    twentyfn()
+  }
+  else if (selectedBox == 2) {
+    fiftyfn()
+  }
+  else if (selectedBox == 3) {
+    hundredfn()
+  }
+  myValue = document.querySelector('#myRange').value;
+
+  let userCard = [];
   document.querySelectorAll('.item') ? userCard = document.querySelectorAll('.item') : userCard = "";
+  console.log(selectedBox);
   userCard.forEach(function (elem) {
-      let cardElem = parseFloat(elem.querySelector('.card-rating').innerText);
-      console.log(cardElem);
+    let cardElem = parseFloat(elem.querySelector('.card-rating').innerText);
+    console.log(cardElem);
+    // elem.classList.add('hide');
+    if (cardElem >= myValue && !elem.classList.contains('hide')) {
+      elem.classList.remove('hide');
+    }
+    else if (cardElem <= myValue ) {
       elem.classList.add('hide');
-      if (cardElem >= myValue) {
-          elem.classList.remove('hide');
-      }
-      if (myValue == 0) {
-          elem.classList.remove('hide');
-      }
+    }
+    // if (myValue == 0) {
+    //     elem.classList.remove('hide');
+    // }
   })
 }
 

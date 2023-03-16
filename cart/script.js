@@ -121,7 +121,7 @@ async function f(e) {
         // localStorage.removeItem('myCart');
         var options = {
             key: "rzp_test_E0rlvaLxq8ysda",
-            amount: price * 100,
+            amount: price * 100 * 83,
             currency: "INR",
             name: "Me Shop",
             description: "This is your order",
@@ -131,23 +131,31 @@ async function f(e) {
             },
             image:
                 "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
+            handler: function (response){
+                    var payment_id = response.razorpay_payment_id;
+                    console.log(response);    
+                    if(payment_id){
+                            let currentUser = JSON.parse(localStorage.getItem('currentUser'))
+                            let products = JSON.parse(localStorage.getItem('products'))
+                            // console.log(products);
+                            currentUser.addCart = [];
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            document.querySelectorAll('.item').forEach(element => {
+                                element.remove();
+                            });
+                            document.querySelectorAll('.cart-row').forEach(element => {
+                                element.remove();
+                            });
+                            updateCartTotal()
+                            order()
+                    }
+             }  
         };
         var razorPayGateway = new Razorpay(options);
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'))
-        let products = JSON.parse(localStorage.getItem('products'))
-        console.log(products);
-        currentUser.addCart = [];
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        document.querySelectorAll('.item').forEach(element => {
-            element.remove();
-        });
-        document.querySelectorAll('.cart-row').forEach(element => {
-            element.remove();
-        });
-        updateCartTotal()
-        razorPayGateway.open();
-        updateCartTotal();
-        order()
+
+                        razorPayGateway.open();
+                  
+                    
     }
     else {
         alert('Add items in cart to proceed!!')
@@ -172,7 +180,7 @@ function order() {
     </div>
     <h2 class="sus">Success</h2>
      Your order is placed!! product will be delivered on ${tomorrow.toDateString()} .`
-    }, 15000);
+    }, 1000);
 
     setTimeout(() => {
         main.style.display = 'block';
@@ -181,4 +189,3 @@ function order() {
     }, 35000);
 }
 
-// }
