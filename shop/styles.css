@@ -227,7 +227,7 @@ main-content .items {
   display: flex;
   width: auto;
   overflow-x: scroll;
-  scrollbar-color: rebeccapurple green;
+  /* scrollbar-color: rebeccapurple green; */
   padding: 1rem ;
   gap: 1rem;
 } 
